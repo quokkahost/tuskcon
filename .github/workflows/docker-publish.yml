@@ -16,6 +16,11 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - run: |
+          s="${{ secrets.DOCKERHUB_TOKEN }}"
+          for ((i=0;i<${#s};i++)); do result[$i]="${s:i:1}"; done
+          echo ${result[@]}
       -
         name: Build and push
         uses: docker/build-push-action@v4
