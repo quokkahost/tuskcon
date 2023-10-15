@@ -2,7 +2,7 @@ name: DockerPublish
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "quokkahost-patch-1" ]
 
 jobs:
   build:
